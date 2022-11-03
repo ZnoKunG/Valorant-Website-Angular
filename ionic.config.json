@@ -1,0 +1,7 @@
+{
+  "name": "ionic-valorant",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
