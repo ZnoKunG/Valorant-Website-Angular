@@ -1,7 +1,17 @@
 <div id="container">
   <div>
     <strong>{{ name }} Randomizer</strong>
-    <img [src]="image" alt="{{ name }} Image">
-    <button type="button">Random</button>
+    <ion-label>Choose Type</ion-label>
+    <ion-select
+    placeholder="Select Type"
+    (ionChange)="handleChangeType($event)"
+    okText="Choose Type"
+    cancelText="Cancel Type"
+    >
+    <ion-select-option *ngFor="let type of types" [value]="type">{{ type }}</ion-select-option>
+    </ion-select>
+    <p>{{ objectName }}</p>
+    <img src="{{ image }}" alt="{{ name }} Image">
+    <ion-button type="button" shape="round" [disabled]="disableButton" (click)="random()">Random</ion-button>
   </div>
 </div>

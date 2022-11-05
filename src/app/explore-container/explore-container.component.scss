@@ -21,12 +21,13 @@
 }
 
 #container p {
-  font-size: 16px;
+  font-size: 25px;
   line-height: 22px;
 
-  color: #8c8c8c;
+  color: #a03039;
 
   margin: 0;
+  padding: 10px;
 }
 
 #container a {
@@ -34,14 +35,27 @@
 }
 
 #container img {
-
+  height: 250px;
+  object-fit: scale-down;
 }
 
-#container button {
-  border-radius: 20%;
+#container ion-button {
   font-size: 20px;
-  color: aliceblue;
-  background-color: #BD3944;
-  padding: 20px;
-  width: 30%;
+  --background: #BD3944;
+  --background-hover: #962831;
+  --background-activated:rgb(204, 82, 92)4;
+  font-family: "Valorant", sans-serif;
+  margin: 10px;
+}
+
+#container ion-label {
+  margin: 10px;
+  font-size: 20px;
+  color: #c7b8a2;
+  font-family: "Valorant", sans-serif;
+}
+
+#container ion-select {
+  --placeholder-opacity: 1;
+  font-family: "Valorant", sans-serif;
 }
