@@ -31,15 +31,18 @@ export class ExploreContainerComponent implements OnInit {
   async randomWeapon() {
     const formatType = this.formatWeaponType(this.currentType);
     const weapons = await this.fetchService.getWeapons(formatType);
-    console.log(weapons);
     await this.scrollingRandom(weapons);
-    const weapon = await this.fetchService.getRandomWeapon(this.currentType);
+    const weapon = await this.fetchService.getRandomWeapon(formatType);
     this.assignObjectProperty(weapon.name, weapon.displayImage);
   }
 
   formatWeaponType(type) {
-    const formattedType = `EEquippableCategory::${type}`;
-    return formattedType;
+    if (type !== '') {
+      const formattedType = `EEquippableCategory::${type}`;
+      return formattedType;
+    } else {
+      return type;
+    }
   }
 
   async random() {

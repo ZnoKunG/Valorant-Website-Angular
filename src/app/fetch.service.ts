@@ -9,16 +9,17 @@ export class FetchService {
     console.log('fetching data from agent endpoint ...');
     const resp = await fetch('https://valorant-api.com/v1/agents');
     console.log('fetch completed, converting to json ...');
-    let agentsJson = await resp.json();
+    const agentsJson = await resp.json();
+    let agentsData;
     console.log('convert to json completed');
     if (role !== '') {
-      agentsJson = agentsJson.data.filter((agent) => agent.isPlayableCharacter === true && agent.role.displayName === role);
+      agentsData = agentsJson.data.filter((agent) => agent.isPlayableCharacter === true && agent.role.displayName === role);
     } else {
-      agentsJson = agentsJson.data.filter((agent) => agent.isPlayableCharacter === true);
+      agentsData = agentsJson.data.filter((agent) => agent.isPlayableCharacter === true);
     }
 
     const agents = [];
-    agentsJson.forEach(agentJson => {
+    agentsData.forEach(agentJson => {
       const agent = new Agent();
       agent.name = agentJson.displayName;
       agent.description = agentJson.description;
@@ -34,7 +35,7 @@ export class FetchService {
   async getWeapons(type=''): Promise<Weapon[]> {
     console.log('fetching data from weapon endpoint ...');
     const resp = await fetch('https://valorant-api.com/v1/weapons');
-    console.log('fetch completed, conerting to json ...');
+    console.log('fetch completed, converting to json ...');
     const weaponsJson = await resp.json();
     console.log('convert to json completed');
     let weaponsData;
